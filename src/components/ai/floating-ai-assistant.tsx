@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { MessageCircle, Send, Sparkles, X } from "lucide-react";
+import { MessageCircle, Send, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { useAIAssistant, quickActions } from "@/components/ai/use-ai-assistant";
@@ -65,7 +65,7 @@ export function FloatingAIAssistant() {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="flex size-10 items-center justify-center rounded-full bg-accent/15 ring-1 ring-accent/25">
-                    <Sparkles aria-hidden="true" className="size-5 text-accent" />
+                    <MessageCircle aria-hidden="true" className="size-5 text-accent" />
                   </div>
                   <div className="absolute -bottom-0.5 -right-0.5 size-3 rounded-full bg-accent ring-2 ring-background" />
                 </div>

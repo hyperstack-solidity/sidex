@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Sparkles, Shield, Calculator, TrendingUp, CheckCircle } from "lucide-react";
+import { X, Shield, Calculator, TrendingUp, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 

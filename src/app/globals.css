@@ -75,8 +75,8 @@
   --chart-1: #01AACA;
   --chart-2: #E9B44C;
   --chart-3: #10B981;
-  --chart-4: #3B82F6;
-  --chart-5: #8B5CF6;
+  --chart-4: #01AACA;
+  --chart-5: #01AACA;
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #ffffff;
@@ -188,6 +188,18 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+@layer utilities {
+
+  /* Custom text-shadow utilities for navigation glow effects */
+  .\[text-shadow\:0_0_20px_rgba\(255\2c 255\2c 255\2c 0\.8\)\] {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+
+  .\[text-shadow\:0_0_15px_rgba\(255\2c 255\2c 255\2c 0\.6\)\] {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
   }
 }
 

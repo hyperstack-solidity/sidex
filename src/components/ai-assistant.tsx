@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, Send, CheckCircle } from "lucide-react";
+import { MessageCircle, Send, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,7 +32,7 @@ export function AIAssistant() {
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center border-2 border-accent/30">
-                  <Sparkles className="w-6 h-6 text-accent" />
+                  <MessageCircle className="w-6 h-6 text-accent" />
                 </div>
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}

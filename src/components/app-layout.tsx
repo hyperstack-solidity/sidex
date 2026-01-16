@@ -1,10 +1,11 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { motion } from "motion/react";
 import {
   LayoutDashboard,
   ArrowLeftRight,
+  ChevronDown,
   Settings,
   Menu,
   FileText,
@@ -17,6 +18,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { LegalModal } from "@/components/legal-modals";
 import { AmbientBackground } from "@/components/ui/ambient-background";
 import { FloatingAIAssistant } from "@/components/ai/floating-ai-assistant";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
 
 interface AppLayoutProps {
@@ -32,8 +42,16 @@ const navigation = [
 export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState<"tos" | "privacy" | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleLogout = () => {
     // Implement logout logic here
@@ -49,43 +67,42 @@ export function AppLayout({ children }: AppLayoutProps) {
     <div className="min-h-screen bg-background relative">
       <AmbientBackground />
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header
+        className={`sticky top-0 z-50 w-full transition-colors ${isScrolled
+          ? "border-b border-border/40 bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/40"
+          : "border-b border-transparent bg-transparent"
+          }`}
+      >
         <div className="container flex h-16 items-center justify-between px-4">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => router.push("/dashboard")}>
-            <div className="relative">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-lg font-bold text-primary-foreground">SE</span>
-              </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full border-2 border-background" />
-            </div>
-            <div className="hidden sm:block">
+            <div className="hidden sm:flex sm:flex-col sm:items-start sm:justify-center">
               <Image
                 src="/sidex.png"
                 alt="SidEx"
                 width={100}
                 height={32}
-                className="h-6 w-auto mb-1"
+                className="h-6 w-auto"
                 priority
               />
-              <p className="text-xs text-muted-foreground">Sharia-Compliant Wallet</p>
+              <p className="text-xs text-muted-foreground -mt-0.5">Sharia-Compliant Wallet</p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center justify-center gap-2">
             {navigation.map((item) => {
-              const Icon = item.icon;
               const isActive = pathname.startsWith(item.path);
               return (
                 <Button
                   key={item.id}
-                  variant={isActive ? "secondary" : "ghost"}
+                  variant="ghost"
                   onClick={() => router.push(item.path)}
-                  className={`gap-2 ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground"
+                  className={`px-4 py-2 transition-all duration-300 !bg-transparent hover:!bg-transparent active:!bg-transparent focus-visible:!bg-transparent ${isActive
+                    ? "text-white [text-shadow:0_0_20px_rgba(255,255,255,0.8)]"
+                    : "text-muted-foreground hover:text-white hover:[text-shadow:0_0_15px_rgba(255,255,255,0.6)]"
                     }`}
                 >
-                  <Icon className="w-4 h-4" />
                   {item.label}
                 </Button>
               );
@@ -104,7 +121,6 @@ export function AppLayout({ children }: AppLayoutProps) {
                 {/* Mobile Navigation */}
                 <nav className="flex-1 space-y-2 mt-8">
                   {navigation.map((item) => {
-                    const Icon = item.icon;
                     const isActive = pathname.startsWith(item.path);
                     return (
                       <Button
@@ -114,10 +130,9 @@ export function AppLayout({ children }: AppLayoutProps) {
                           router.push(item.path);
                           setMobileMenuOpen(false);
                         }}
-                        className={`w-full justify-start gap-3 ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground"
+                        className={`w-full justify-center ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground"
                           }`}
                       >
-                        <Icon className="w-5 h-5" />
                         {item.label}
                       </Button>
                     );
@@ -149,6 +164,20 @@ export function AppLayout({ children }: AppLayoutProps) {
                     Privacy Policy
                   </Button>
 
+                  <div className="my-4 border-t border-border" />
+
+                  <div className="flex items-center gap-3 px-2 py-2">
+                    <Avatar className="size-9">
+                      <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
+                        SE
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="leading-tight">
+                      <p className="text-sm font-medium">Account</p>
+                      <p className="text-xs text-muted-foreground">Manage wallet access</p>
+                    </div>
+                  </div>
+
                   <Button
                     variant="ghost"
                     onClick={() => {
@@ -174,14 +203,39 @@ export function AppLayout({ children }: AppLayoutProps) {
 
           {/* Desktop User Menu */}
           <div className="hidden md:block">
-            <Button
-              variant="ghost"
-              onClick={handleLogout}
-              className="text-muted-foreground"
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-9 gap-2 px-2 text-muted-foreground !bg-transparent hover:!bg-transparent active:!bg-transparent focus-visible:!bg-transparent">
+                  <Avatar className="size-8">
+                    <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
+                      SE
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="hidden lg:inline">Account</span>
+                  <ChevronDown className="size-4 opacity-60" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-64">
+                <DropdownMenuLabel className="px-2 py-2">
+                  <div className="flex items-center gap-3">
+                    <Avatar className="size-9">
+                      <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
+                        SE
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="leading-tight">
+                      <div className="text-sm font-medium">Account</div>
+                      <div className="text-xs text-muted-foreground">SidEx Wallet</div>
+                    </div>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem variant="destructive" onClick={handleLogout}>
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>

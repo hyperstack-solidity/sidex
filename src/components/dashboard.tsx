@@ -4,7 +4,6 @@ import {
   TrendingUp,
   ArrowUpRight,
   ArrowDownRight,
-  Sparkles,
   Shield,
   Zap,
   Send,
@@ -12,6 +11,7 @@ import {
   Plus,
   ChevronRight,
 } from "lucide-react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -151,11 +151,12 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                 <AreaChart data={portfolioData}>
                   <defs>
                     <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#0F6B66" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#0F6B66" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#01AACA" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#01AACA" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(15, 107, 102, 0.1)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(1, 170, 202, 0.12)" />
+
                   <XAxis
                     dataKey="time"
                     stroke="#8A9BA8"
@@ -171,7 +172,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#0B2733",
-                      border: "1px solid rgba(15, 107, 102, 0.3)",
+                      border: "1px solid rgba(1, 170, 202, 0.3)",
                       borderRadius: "8px",
                     }}
                     formatter={(value: number) => [`$${value.toLocaleString()}`, "Value"]}
@@ -179,7 +180,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="#0F6B66"
+                    stroke="#01AACA"
                     strokeWidth={2}
                     fill="url(#colorValue)"
                   />
@@ -255,7 +256,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                           <p className="font-medium">{token.name}</p>
                           {token.halalStatus === "certified" && (
                             <Badge variant="outline" className="text-xs border-accent/30 text-accent">
-                              <Sparkles className="w-3 h-3 mr-1" />
+                              <Shield className="w-3 h-3 mr-1" />
                               Halal
                             </Badge>
                           )}
