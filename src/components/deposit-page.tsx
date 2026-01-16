@@ -19,7 +19,7 @@ interface DepositPageProps {
 const tokens = [
   { symbol: "SDA", name: "SidraChain", network: "SidraChain Mainnet" },
   { symbol: "ETH", name: "Ethereum", network: "Ethereum Mainnet" },
-  { symbol: "TRE", name: "Tokenized Real Estate", network: "SidraChain Mainnet" },
+  { symbol: "BTC", name: "Bitcoin", network: "Bitcoin Network" },
 ];
 
 export function DepositPage({ onBack }: DepositPageProps) {
@@ -109,11 +109,10 @@ export function DepositPage({ onBack }: DepositPageProps) {
                   onClick={handleCopyAddress}
                   variant="outline"
                   size="icon"
-                  className={`shrink-0 ${
-                    copied
+                  className={`shrink-0 ${copied
                       ? "bg-emerald-500/20 border-emerald-500/30"
                       : "border-primary/20"
-                  }`}
+                    }`}
                 >
                   {copied ? (
                     <CheckCircle className="w-4 h-4 text-emerald-400" />

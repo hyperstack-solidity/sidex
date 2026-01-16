@@ -87,7 +87,7 @@ export function useAIAssistant() {
         case "scan":
           userMessage = "Initiate Compliance Audit";
           assistantResponse =
-            "Audit Results: VERIFIED.\n\n• SidraChain (SDA): AAOIFI Compliant\n• Ethereum (ETH): Compliant\n• Tokenized Real Estate (TRE): Compliant\n\nStatus: No prohibited assets detected.";
+            "Audit Results: VERIFIED.\n\n• SidraChain (SDA): AAOIFI Compliant\n• Ethereum (ETH): Compliant\n• Bitcoin (BTC): Compliant\n\nStatus: No prohibited assets detected.";
           break;
         case "zakat":
           userMessage = "Estimate Zakat Obligations";

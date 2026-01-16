@@ -14,7 +14,7 @@ import {
   Bell,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { usePathname, useRouter } from "next/navigation";
 import { LegalModal } from "@/components/legal-modals";
 import { AmbientBackground } from "@/components/ui/ambient-background";
@@ -31,6 +31,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -84,7 +85,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         <div className="w-full flex h-16 items-center justify-between px-6 md:px-12 relative">
           {/* Logo - Left Side */}
           <div className="flex items-center gap-2 cursor-pointer h-9 flex-1 group" onClick={() => router.push("/dashboard")}>
-            <div className="hidden sm:flex sm:flex-col sm:items-center sm:justify-center h-full">
+            <div className="flex flex-col items-start sm:items-center justify-center h-full">
               <Image
                 src="/sidex.png"
                 alt="SidEx"
@@ -93,7 +94,7 @@ export function AppLayout({ children }: AppLayoutProps) {
                 className="h-5 w-auto h-auto"
                 priority
               />
-              <p className="text-[10px] text-muted-foreground leading-tight transition-all duration-300 group-hover:text-white group-hover:[text-shadow:0_0_15px_rgba(255,255,255,0.6)]">Sharia-Compliant Wallet</p>
+              <p className="hidden sm:block text-[10px] text-muted-foreground leading-tight transition-all duration-300 group-hover:text-white group-hover:[text-shadow:0_0_15px_rgba(255,255,255,0.6)]">Sharia-Compliant Wallet</p>
             </div>
           </div>
 
@@ -125,6 +126,7 @@ export function AppLayout({ children }: AppLayoutProps) {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-72">
+              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
               <div className="flex flex-col h-full">
                 {/* Mobile Navigation */}
                 <nav className="flex-1 space-y-2 mt-8">
@@ -309,6 +311,9 @@ export function AppLayout({ children }: AppLayoutProps) {
               <Shield className="h-5 w-5 text-[#01AACA]" />
               <DialogTitle className="text-xl">System Status: Operational</DialogTitle>
             </div>
+            <DialogDescription className="sr-only">
+              Real-time monitoring and status information for the SidEx platform.
+            </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-4 py-4">

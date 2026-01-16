@@ -21,7 +21,7 @@ interface SwapTransactionProps {
 const tokens = [
   { symbol: "SDA", name: "SidraChain", balance: "10,250.50", price: 12.2 },
   { symbol: "ETH", name: "Ethereum", balance: "5.25", price: 3000 },
-  { symbol: "TRE", name: "Real Estate Fund", balance: "50.00", price: 185 },
+  { symbol: "BTC", name: "Bitcoin", balance: "0.15", price: 61666 },
 ];
 
 export function SwapTransaction({ onBack }: SwapTransactionProps) {

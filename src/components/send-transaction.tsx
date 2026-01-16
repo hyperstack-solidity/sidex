@@ -21,7 +21,7 @@ interface SendTransactionProps {
 const tokens = [
   { symbol: "SDA", name: "SidraChain", balance: "10,250.50" },
   { symbol: "ETH", name: "Ethereum", balance: "5.25" },
-  { symbol: "TRE", name: "Tokenized Real Estate", balance: "50.00" },
+  { symbol: "BTC", name: "Bitcoin", balance: "0.15" },
 ];
 
 export function SendTransaction({ onBack }: SendTransactionProps) {

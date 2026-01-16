@@ -329,13 +329,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #004e64;
+  background: #3a3a3a;
   border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #01AACA;
-  box-shadow: 0 0 8px rgba(1, 170, 202, 0.6);
+  background: #525252;
+  box-shadow: 0 0 4px rgba(82, 82, 82, 0.3);
 }
 
 /* Floating Animation */

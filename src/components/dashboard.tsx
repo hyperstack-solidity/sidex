@@ -10,6 +10,7 @@ import {
   Plus,
   ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -45,6 +46,7 @@ const tokens = [
     change: "+12.5%",
     isPositive: true,
     halalStatus: "certified",
+    image: "/sidra-chain-removebg-preview.png",
   },
   {
     name: "Ethereum",
@@ -54,15 +56,17 @@ const tokens = [
     change: "+8.2%",
     isPositive: true,
     halalStatus: "certified",
+    image: "/ethereum-removebg-preview.png",
   },
   {
-    name: "Real Estate Fund",
-    symbol: "TRE",
-    balance: "50.00",
+    name: "Bitcoin",
+    symbol: "BTC",
+    balance: "0.15",
     value: "$9,250.00",
     change: "-2.1%",
     isPositive: false,
     halalStatus: "certified",
+    image: "/bitcoin.png",
   },
 ];
 
@@ -240,10 +244,14 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
-                        <span className="text-sm font-bold text-primary">
-                          {token.symbol.slice(0, 2)}
-                        </span>
+                      <div className="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center border border-zinc-700 overflow-hidden">
+                        <Image
+                          src={token.image}
+                          alt={token.name}
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-contain"
+                        />
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
