@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import {
-  Settings,
   Shield,
   Bell,
   Globe,

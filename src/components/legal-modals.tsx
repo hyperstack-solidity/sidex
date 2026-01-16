@@ -51,7 +51,7 @@ function TermsOfService() {
           <li>
             <strong>User Responsibility:</strong> SidEx does not store your private
             keys, recovery phrases, or passwords. You are solely responsible for the
-            security of your "Secret Recovery Phrase."
+            security of your &quot;Secret Recovery Phrase.&quot;
           </li>
           <li>
             <strong>No Recovery:</strong> If you lose your recovery phrase, SidEx cannot
@@ -67,7 +67,7 @@ function TermsOfService() {
           <li>
             <strong>Tools, Not Fatwas:</strong> The Zakat calculator and Halal
             indicators are automated tools provided for convenience. They do not
-            constitute a formal "Fatwa."
+            constitute a formal &quot;Fatwa.&quot;
           </li>
           <li>
             <strong>User Discretion:</strong> Users are responsible for final
@@ -91,7 +91,7 @@ function TermsOfService() {
       <section>
         <h3 className="font-semibold mb-2">5. Limitation of Liability</h3>
         <p className="text-muted-foreground">
-          SidEx is provided "as is." We are not liable for any losses resulting from
+          SidEx is provided &quot;as is.&quot; We are not liable for any losses resulting from
           SidraChain network congestion, software bugs, or third-party API failures
           (e.g., CoinGecko).
         </p>
@@ -172,7 +172,7 @@ function PrivacyPolicy() {
         <h3 className="font-semibold mb-2">5. Security</h3>
         <p className="text-muted-foreground">
           We implement high-level encryption to protect the app interface, but the
-          ultimate security of the assets rests with the user's device security and seed
+          ultimate security of the assets rests with the user&apos;s device security and seed
           phrase management.
         </p>
       </section>
@@ -180,7 +180,7 @@ function PrivacyPolicy() {
       <section>
         <h3 className="font-semibold mb-2">6. Data Protection Compliance</h3>
         <p className="text-muted-foreground">
-          SidEx follows a "Privacy by Design" approach and is committed to compliance
+          SidEx follows a &quot;Privacy by Design&quot; approach and is committed to compliance
           with GDPR and GCC data protection regulations where applicable.
         </p>
       </section>

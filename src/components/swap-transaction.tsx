@@ -337,7 +337,7 @@ export function SwapTransaction({ onBack }: SwapTransactionProps) {
                   className="bg-input border-primary/20 text-muted-foreground"
                 />
                 <p className="text-sm text-muted-foreground">
-                  Estimated amount you'll receive
+                  Estimated amount you&apos;ll receive
                 </p>
               </div>
             </div>

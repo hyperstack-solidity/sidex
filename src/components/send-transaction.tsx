@@ -285,7 +285,7 @@ export function SendTransaction({ onBack }: SendTransactionProps) {
                   </span>
                 </div>
                 <div className="flex justify-between font-medium">
-                  <span>You'll Send</span>
+                  <span>You&apos;ll Send</span>
                   <span>
                     {amount} {selectedToken}
                   </span>
