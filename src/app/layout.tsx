@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: "SidEx - Sharia-Compliant Wallet",
   description: "AI-powered Sharia-compliant cryptocurrency wallet with aggregated DeFi services",
   icons: {
-    icon: '/sidex.png',
-    apple: '/sidex.png',
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
 };
 
