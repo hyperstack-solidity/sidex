@@ -81,19 +81,19 @@ export function AppLayout({ children }: AppLayoutProps) {
           : "border-b border-transparent bg-transparent"
           }`}
       >
-        <div className="container flex h-16 items-center justify-between px-4 relative">
+        <div className="w-full flex h-16 items-center justify-between px-6 md:px-12 relative">
           {/* Logo - Left Side */}
-          <div className="flex items-center gap-2 cursor-pointer h-9 flex-1" onClick={() => router.push("/dashboard")}>
-            <div className="hidden sm:flex sm:flex-col sm:items-start sm:justify-center h-full">
+          <div className="flex items-center gap-2 cursor-pointer h-9 flex-1 group" onClick={() => router.push("/dashboard")}>
+            <div className="hidden sm:flex sm:flex-col sm:items-center sm:justify-center h-full">
               <Image
                 src="/sidex.png"
                 alt="SidEx"
                 width={100}
                 height={32}
-                className="h-5 w-auto"
+                className="h-5 w-auto h-auto"
                 priority
               />
-              <p className="text-[10px] text-muted-foreground leading-tight">Sharia-Compliant Wallet</p>
+              <p className="text-[10px] text-muted-foreground leading-tight transition-all duration-300 group-hover:text-white group-hover:[text-shadow:0_0_15px_rgba(255,255,255,0.6)]">Sharia-Compliant Wallet</p>
             </div>
           </div>
 

@@ -4,7 +4,7 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   Shield,
-  Zap,
+  Activity,
   Send,
   ArrowLeftRight,
   Plus,
@@ -335,7 +335,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                <Zap className="w-5 h-5 text-accent" />
+                <Activity className="w-5 h-5 text-accent" />
               </div>
               <div className="flex-1">
                 <p className="font-medium">Market Signal Analysis</p>
