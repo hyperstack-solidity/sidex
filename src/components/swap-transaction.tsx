@@ -19,13 +19,13 @@ interface SwapTransactionProps {
 }
 
 const tokens = [
-  { symbol: "SDX", name: "SidraChain", balance: "10,250.50", price: 12.2 },
+  { symbol: "SDA", name: "SidraChain", balance: "10,250.50", price: 12.2 },
   { symbol: "ETH", name: "Ethereum", balance: "5.25", price: 3000 },
   { symbol: "TRE", name: "Real Estate Fund", balance: "50.00", price: 185 },
 ];
 
 export function SwapTransaction({ onBack }: SwapTransactionProps) {
-  const [fromToken, setFromToken] = useState("SDX");
+  const [fromToken, setFromToken] = useState("SDA");
   const [toToken, setToToken] = useState("ETH");
   const [fromAmount, setFromAmount] = useState("");
   const [toAmount, setToAmount] = useState("");

@@ -74,7 +74,7 @@ export function AIAssistant() {
       case "scan":
         userMessage = "Initiate Compliance Audit";
         assistantResponse =
-          "Audit Results: VERIFIED.\n\n• SidraChain (SDX): AAOIFI Compliant\n• Ethereum (ETH): Compliant\n• Tokenized Real Estate (TRE): Compliant\n\nStatus: No prohibited assets detected.";
+          "Audit Results: VERIFIED.\n\n• SidraChain (SDA): AAOIFI Compliant\n• Ethereum (ETH): Compliant\n• Tokenized Real Estate (TRE): Compliant\n\nStatus: No prohibited assets detected.";
         break;
       case "zakat":
         userMessage = "Estimate Zakat Obligations";
@@ -84,12 +84,12 @@ export function AIAssistant() {
       case "market":
         userMessage = "Analyze Market Trends";
         assistantResponse =
-          "Market Intelligence:\n\n• SidraChain (SDX): +12.5% (24h). High liquidity.\n• Sector: Islamic Finance (+18% QTD).\n• Commodities: Gold-backed assets showing stability.\n\nAdvisory: Volatility detected in non-compliant DeFi sectors.";
+          "Market Intelligence:\n\n• SidraChain (SDA): +12.5% (24h). High liquidity.\n• Sector: Islamic Finance (+18% QTD).\n• Commodities: Gold-backed assets showing stability.\n\nAdvisory: Volatility detected in non-compliant DeFi sectors.";
         break;
       case "summary":
         userMessage = "Generate Transaction Summary";
         assistantResponse =
-          "Transaction Log:\n\n• IN: 500 SDX ($6,100) | Origin: 0x742d...\n• OUT: 0.5 ETH ($1,500) | Dest: 0x3f2a...\n• SWAP: 1000 SDX → ETH | Vol: $12,200\n\nAll entries cryptographically verified.";
+          "Transaction Log:\n\n• IN: 500 SDA ($6,100) | Origin: 0x742d...\n• OUT: 0.5 ETH ($1,500) | Dest: 0x3f2a...\n• SWAP: 1000 SDA → ETH | Vol: $12,200\n\nAll entries cryptographically verified.";
         break;
     }
 

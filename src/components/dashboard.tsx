@@ -41,7 +41,7 @@ const portfolioData = [
 const tokens = [
   {
     name: "SidraChain",
-    symbol: "SDX",
+    symbol: "SDA",
     balance: "10,250.50",
     value: "$125,000.00",
     change: "+12.5%",
@@ -71,7 +71,7 @@ const tokens = [
 const recentTransactions = [
   {
     type: "received",
-    token: "SDX",
+    token: "SDA",
     amount: "+500.00",
     usd: "$6,100.00",
     from: "0x742d...3a8f",
@@ -87,8 +87,8 @@ const recentTransactions = [
   },
   {
     type: "swap",
-    token: "SDX → ETH",
-    amount: "1000 SDX",
+    token: "SDA → ETH",
+    amount: "1000 SDA",
     usd: "$12,200.00",
     time: "1 day ago",
   },
@@ -345,7 +345,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               <div className="flex-1">
                 <p className="font-medium">Market Signal Analysis</p>
                 <p className="text-sm text-muted-foreground">
-                  SidraChain (SDX) showing positive momentum (+12.5%). Zakat threshold reached.
+                  SidraChain (SDA) showing positive momentum (+12.5%). Zakat threshold reached.
                 </p>
               </div>
               <Button

@@ -19,13 +19,13 @@ interface SendTransactionProps {
 }
 
 const tokens = [
-  { symbol: "SDX", name: "SidraChain", balance: "10,250.50" },
+  { symbol: "SDA", name: "SidraChain", balance: "10,250.50" },
   { symbol: "ETH", name: "Ethereum", balance: "5.25" },
   { symbol: "TRE", name: "Tokenized Real Estate", balance: "50.00" },
 ];
 
 export function SendTransaction({ onBack }: SendTransactionProps) {
-  const [selectedToken, setSelectedToken] = useState("SDX");
+  const [selectedToken, setSelectedToken] = useState("SDA");
   const [recipient, setRecipient] = useState("");
   const [amount, setAmount] = useState("");
   const [isConfirming, setIsConfirming] = useState(false);
@@ -79,7 +79,7 @@ export function SendTransaction({ onBack }: SendTransactionProps) {
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Network Fee</span>
                 <span>
-                  {estimatedFee} SDX ({estimatedFeeUSD})
+                  {estimatedFee} SDA ({estimatedFeeUSD})
                 </span>
               </div>
               <div className="pt-3 border-t border-border">
@@ -122,7 +122,7 @@ export function SendTransaction({ onBack }: SendTransactionProps) {
               </h4>
               <p className="text-sm text-muted-foreground">
                 You will send exactly {amount} {selectedToken} to the recipient. After
-                the network fee of {estimatedFee} SDX ({estimatedFeeUSD}), your total
+                the network fee of {estimatedFee} SDA ({estimatedFeeUSD}), your total
                 cost will be calculated transparently.
               </p>
             </div>
@@ -144,13 +144,13 @@ export function SendTransaction({ onBack }: SendTransactionProps) {
               <div className="flex justify-between py-2 border-b border-border">
                 <span className="text-muted-foreground">Network Fee</span>
                 <span>
-                  {estimatedFee} SDX ({estimatedFeeUSD})
+                  {estimatedFee} SDA ({estimatedFeeUSD})
                 </span>
               </div>
               <div className="flex justify-between py-2 font-medium">
                 <span>Total Cost</span>
                 <span>
-                  {parseFloat(amount) + parseFloat(estimatedFee)} SDX
+                  {parseFloat(amount) + parseFloat(estimatedFee)} SDA
                 </span>
               </div>
             </div>
@@ -281,7 +281,7 @@ export function SendTransaction({ onBack }: SendTransactionProps) {
                 <div className="flex justify-between text-sm mb-2">
                   <span className="text-muted-foreground">Estimated Fee</span>
                   <span>
-                    {estimatedFee} SDX ({estimatedFeeUSD})
+                    {estimatedFee} SDA ({estimatedFeeUSD})
                   </span>
                 </div>
                 <div className="flex justify-between font-medium">

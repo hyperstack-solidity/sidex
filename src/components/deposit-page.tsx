@@ -17,13 +17,13 @@ interface DepositPageProps {
 }
 
 const tokens = [
-  { symbol: "SDX", name: "SidraChain", network: "SidraChain Mainnet" },
+  { symbol: "SDA", name: "SidraChain", network: "SidraChain Mainnet" },
   { symbol: "ETH", name: "Ethereum", network: "Ethereum Mainnet" },
   { symbol: "TRE", name: "Tokenized Real Estate", network: "SidraChain Mainnet" },
 ];
 
 export function DepositPage({ onBack }: DepositPageProps) {
-  const [selectedToken, setSelectedToken] = useState("SDX");
+  const [selectedToken, setSelectedToken] = useState("SDA");
   const [copied, setCopied] = useState(false);
 
   // Mock wallet address
