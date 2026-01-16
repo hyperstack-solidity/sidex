@@ -73,24 +73,24 @@ export function AppLayout({ children }: AppLayoutProps) {
           : "border-b border-transparent bg-transparent"
           }`}
       >
-        <div className="container flex h-16 items-center justify-between px-4">
-          {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => router.push("/dashboard")}>
-            <div className="hidden sm:flex sm:flex-col sm:items-start sm:justify-center">
+        <div className="container flex h-16 items-center justify-between px-4 relative">
+          {/* Logo - Left Side */}
+          <div className="flex items-center gap-2 cursor-pointer h-9 flex-1" onClick={() => router.push("/dashboard")}>
+            <div className="hidden sm:flex sm:flex-col sm:items-start sm:justify-center h-full">
               <Image
                 src="/sidex.png"
                 alt="SidEx"
                 width={100}
                 height={32}
-                className="h-6 w-auto"
+                className="h-5 w-auto"
                 priority
               />
-              <p className="text-xs text-muted-foreground -mt-0.5">Sharia-Compliant Wallet</p>
+              <p className="text-[10px] text-muted-foreground leading-tight">Sharia-Compliant Wallet</p>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center gap-2">
+          {/* Desktop Navigation - Absolutely Centered */}
+          <nav className="hidden md:flex items-center justify-center gap-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {navigation.map((item) => {
               const isActive = pathname.startsWith(item.path);
               return (
@@ -201,8 +201,8 @@ export function AppLayout({ children }: AppLayoutProps) {
             </SheetContent>
           </Sheet>
 
-          {/* Desktop User Menu */}
-          <div className="hidden md:block">
+          {/* Desktop User Menu - Right Side */}
+          <div className="hidden md:flex flex-1 justify-end">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-9 gap-2 px-2 text-muted-foreground !bg-transparent hover:!bg-transparent active:!bg-transparent focus-visible:!bg-transparent">
