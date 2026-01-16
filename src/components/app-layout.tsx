@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import {
   LayoutDashboard,
   ArrowLeftRight,
-  Sparkles,
   Settings,
   Menu,
   FileText,
@@ -16,6 +15,9 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname, useRouter } from "next/navigation";
 import { LegalModal } from "@/components/legal-modals";
+import { AmbientBackground } from "@/components/ui/ambient-background";
+import { FloatingAIAssistant } from "@/components/ai/floating-ai-assistant";
+import Image from "next/image";
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -24,13 +26,8 @@ interface AppLayoutProps {
 const navigation = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
   { id: "swap", label: "Swap", icon: ArrowLeftRight, path: "/swap" },
-  { id: "ai", label: "AI Assistant", icon: Sparkles, path: "/ai" },
   { id: "settings", label: "Settings", icon: Settings, path: "/settings" },
 ];
-
-import { AmbientBackground } from "@/components/ui/ambient-background";
-
-import Image from "next/image";
 
 export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -226,6 +223,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         </div>
       </footer>
 
+      <FloatingAIAssistant />
       <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />
     </div>
   );
