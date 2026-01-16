@@ -13,8 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sidex",
-  description: "Sidex Application",
+  title: "SidEx - Sharia-Compliant Wallet",
+  description: "AI-powered Sharia-compliant cryptocurrency wallet with aggregated DeFi services",
+  icons: {
+    icon: '/sidex.png',
+    apple: '/sidex.png',
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
