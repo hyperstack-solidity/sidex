@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 import {
   TrendingUp,
   ArrowUpRight,
@@ -9,6 +10,8 @@ import {
   ArrowLeftRight,
   Plus,
   ChevronRight,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -101,50 +104,108 @@ interface DashboardProps {
 }
 
 export function Dashboard({ onNavigate }: DashboardProps) {
+  const [showValue, setShowValue] = useState(true);
+
   return (
     <div className="space-y-6 pb-8">
 
       {/* Portfolio Overview - Hero Section */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="relative"
       >
-        <Card className="relative overflow-hidden border border-zinc-800 bg-zinc-950">
+        {/* Background Gradient Orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-white/3 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-white/3 rounded-full blur-3xl" />
+        </div>
 
-          <CardHeader className="relative">
-            <div className="flex items-start justify-between">
-              <div>
-                <CardTitle className="text-sm text-muted-foreground mb-2">
-                  Total Portfolio Value
-                </CardTitle>
-                <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-bold">$150,000.00</span>
-                  <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-                    <TrendingUp className="w-3 h-3 mr-1" />
-                    +18.7%
-                  </Badge>
-                </div>
-                <p className="text-sm text-muted-foreground mt-1">
-                  +$23,750.00 this month
-                </p>
-              </div>
-
-              {/* Halal Certified Badge */}
+        <div className="relative py-12 md:py-16 px-4 md:px-6">
+          {/* Main Content - Left Aligned */}
+          <div className="flex flex-col justify-center max-w-4xl">
+            <div className="w-full">{/* Wrapper for content */}
+              {/* Label with Nav Active Glow + Halal Badge - First to appear */}
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex flex-col items-center gap-1 p-3 rounded-xl bg-accent/20 border border-accent/30 backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="flex items-center gap-3 mb-6 flex-wrap"
               >
-                <Shield className="w-6 h-6 text-accent" />
-                <span className="text-xs font-medium text-accent">Halal</span>
-                <span className="text-xs text-accent/80">Certified</span>
+                <p className="text-xs md:text-sm text-white uppercase tracking-wider [text-shadow:0_0_20px_rgba(255,255,255,0.8)]">
+                  Total Portfolio Value
+                </p>
+
+                {/* Halal Certified Badge - Compact & Hoverable */}
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm cursor-pointer transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10"
+                >
+                  <Shield className="w-3.5 h-3.5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
+                  <span className="text-[10px] md:text-xs font-medium text-emerald-400 group-hover:text-emerald-300 transition-colors uppercase tracking-wide">
+                    Halal Certified
+                  </span>
+                </motion.div>
+              </motion.div>
+
+              {/* Main Value with Eye Toggle - Second to appear with scale */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.3,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                className="mb-6 flex items-center gap-3 md:gap-4"
+              >
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent">
+                  {showValue ? "$150,000.00" : "••••••••"}
+                </h1>
+                <motion.button
+                  onClick={() => setShowValue(!showValue)}
+                  className="text-muted-foreground hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={showValue ? "Hide value" : "Show value"}
+                >
+                  {showValue ? (
+                    <Eye className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                  ) : (
+                    <EyeOff className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                  )}
+                </motion.button>
+              </motion.div>
+
+              {/* Stats Row - Third to appear */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-8"
+              >
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-emerald-400" />
+                  <span className="text-emerald-400 font-semibold text-lg md:text-xl">+18.7%</span>
+                </div>
+                <p className="text-sm md:text-base text-muted-foreground/80">
+                  <span className="text-emerald-400 font-medium">+$23,750.00</span> this month
+                </p>
               </motion.div>
             </div>
-          </CardHeader>
+          </div>
 
-          <CardContent className="relative">
-            {/* Chart */}
-            <div className="h-48 -mx-2">
+          {/* Chart Section */}
+          <div className="relative rounded-2xl border border-zinc-800/50 bg-gradient-to-br from-zinc-900/50 to-zinc-950/50 backdrop-blur-sm p-6 overflow-hidden">
+            {/* Subtle grid pattern overlay */}
+            <div className="absolute inset-0 opacity-[0.02]" style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              backgroundSize: '20px 20px'
+            }} />
+
+            <div className="h-48 relative z-10">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={portfolioData}>
                   <defs>
@@ -153,7 +214,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                       <stop offset="95%" stopColor="#01AACA" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(1, 170, 202, 0.12)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(1, 170, 202, 0.08)" />
 
                   <XAxis
                     dataKey="time"
@@ -185,8 +246,8 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </motion.div>
 
       {/* Quick Actions */}
