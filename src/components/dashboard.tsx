@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { useState } from "react";
 import {
   TrendingUp,
   ArrowUpRight,
@@ -15,7 +14,6 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { WelcomeBanner } from "@/components/welcome-banner";
 import {
   LineChart,
   Line,
@@ -99,12 +97,8 @@ interface DashboardProps {
 }
 
 export function Dashboard({ onNavigate }: DashboardProps) {
-  const [showWelcome, setShowWelcome] = useState(true);
-
   return (
     <div className="space-y-6 pb-8">
-      {/* Welcome Banner */}
-      {showWelcome && <WelcomeBanner onClose={() => setShowWelcome(false)} />}
 
       {/* Portfolio Overview - Hero Section */}
       <motion.div

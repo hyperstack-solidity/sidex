@@ -11,6 +11,7 @@ import {
   FileText,
   Shield,
   LogOut,
+  Bell,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -27,6 +28,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import Image from "next/image";
 
 interface AppLayoutProps {
@@ -42,6 +49,7 @@ const navigation = [
 export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState<"tos" | "privacy" | null>(null);
+  const [notificationOpen, setNotificationOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -202,7 +210,20 @@ export function AppLayout({ children }: AppLayoutProps) {
           </Sheet>
 
           {/* Desktop User Menu - Right Side */}
-          <div className="hidden md:flex flex-1 justify-end">
+          <div className="hidden md:flex flex-1 justify-end items-center gap-1">
+            {/* Notification Bell */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 relative !bg-transparent hover:!bg-transparent active:!bg-transparent focus-visible:!bg-transparent text-muted-foreground hover:text-white transition-colors"
+              onClick={() => setNotificationOpen(true)}
+            >
+              <Bell className="h-5 w-5" />
+              {/* Notification Badge */}
+              <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-[#01AACA] ring-2 ring-background animate-pulse" />
+            </Button>
+
+            {/* Account Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-9 gap-2 px-2 text-muted-foreground !bg-transparent hover:!bg-transparent active:!bg-transparent focus-visible:!bg-transparent">
@@ -279,6 +300,81 @@ export function AppLayout({ children }: AppLayoutProps) {
 
       <FloatingAIAssistant />
       <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />
+
+      {/* System Status Notification Dialog */}
+      <Dialog open={notificationOpen} onOpenChange={setNotificationOpen}>
+        <DialogContent className="sm:max-w-[600px] bg-zinc-950 border-zinc-800">
+          <DialogHeader>
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5 text-[#01AACA]" />
+              <DialogTitle className="text-xl">System Status: Operational</DialogTitle>
+            </div>
+          </DialogHeader>
+
+          <div className="space-y-4 py-4">
+            {/* Main Status Message */}
+            <p className="text-sm text-muted-foreground">
+              SidraChain connection established. All compliance modules are active and monitoring real-time transactions.
+            </p>
+
+            {/* Status Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Compliance Verified */}
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-zinc-900/50 border border-zinc-800">
+                <div className="mt-0.5">
+                  <div className="h-8 w-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                    <Shield className="h-4 w-4 text-emerald-500" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-0.5">Compliance Verified</h4>
+                  <p className="text-xs text-muted-foreground">AAOIFI Standards Met</p>
+                </div>
+              </div>
+
+              {/* Zakat Calculator */}
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-zinc-900/50 border border-zinc-800">
+                <div className="mt-0.5">
+                  <div className="h-8 w-8 rounded-full bg-[#01AACA]/10 flex items-center justify-center">
+                    <svg className="h-4 w-4 text-[#01AACA]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-0.5">Zakat Calculator</h4>
+                  <p className="text-xs text-muted-foreground">Auto-calculation Active</p>
+                </div>
+              </div>
+
+              {/* Market Intelligence */}
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-zinc-900/50 border border-zinc-800">
+                <div className="mt-0.5">
+                  <div className="h-8 w-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                    <svg className="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-white mb-0.5">Market Intelligence</h4>
+                  <p className="text-xs text-muted-foreground">Live Data Feed</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Acknowledge Button */}
+            <div className="flex justify-end pt-2">
+              <Button
+                onClick={() => setNotificationOpen(false)}
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+              >
+                Acknowledge
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
